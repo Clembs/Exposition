@@ -1,2 +1,19 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import Hero from './Hero.svelte';
+</script>
+
+<nav>
+	<a href="/">Equipe</a>
+	<div>
+		<a href="/programme">Programme</a>
+		<a href="/billeterie">Billeterie</a>
+		<a href="/infos">Infos</a>
+		<a href="/contact">Contact</a>
+	</div>
+</nav>
+
+<Hero />
+
+<main>
+	<section></section>
+</main>
