@@ -1,49 +1,47 @@
-:root {
-	--font-modern: 'Helvetica', sans-serif;
-	--font-old-school: 'Apple Garamond', sans-serif;
-	--font-retro: 'System', sans-serif;
+@import './vars.scss';
 
-	--color-rock-gray: hsl(227, 9%, 81%);
-	--color-mac-cream: hsl(44, 17%, 83%);
-	--color-famicom-cream: hsl(39, 42%, 87%);
-	--color-mica-light: hsl(209, 100%, 94%);
-	--color-shell-black: hsl(0, 0%, 3%);
-	--color-space-gray: hsl(40, 3%, 36%);
-	--color-windows-nt: hsl(231, 37%, 18%);
-	--color-mica-dark: hsl(229, 37%, 14%);
+* {
+	box-sizing: border-box;
+}
 
-	--color-skype-blue: hsl(197, 100%, 47%);
-	--color-youtube-red: hsl(0, 100%, 50%);
-	--color-gbc-purple: hsl(263, 41%, 39%);
-	--color-imac-green: hsl(147, 89%, 28%);
-	--color-firefox-orange: hsl(37, 99%, 55%);
+body {
+	margin: 0;
+	padding: 0;
+}
 
-	--gradient-vision-pro: radial-gradient(
-		230.39% 254.39% at 65.48% -34.44%,
-		rgb(254, 159, 254) 0%,
-		rgb(201, 173, 255) 11%,
-		rgb(205, 96, 203) 27%,
-		rgb(97, 69, 237) 40%,
-		rgb(61, 27, 116) 62%,
-		rgb(58, 47, 117) 100%
-	);
-	--gradient-instagram: radial-gradient(
-		136.39% 151.81% at 107.74% -6.94%,
-		rgb(129, 11, 252) 0%,
-		rgb(232, 3, 223) 21%,
-		rgb(252, 1, 216) 37%,
-		rgb(255, 22, 57) 62%,
-		rgb(255, 138, 3) 85%,
-		rgb(255, 198, 1) 100%
-	);
-	--gradient-windows: linear-gradient(
-		180deg,
-		#69d7ff 0%,
-		#40bdff 5%,
-		#38a4fc 40%,
-		#1d7cfe 60%,
-		#063de2 80%,
-		#0222b9 100%
-	);
-	--gradient-apple-music: linear-gradient(180deg, #fb637b 0.5%, #fa3d56 50%, #fa1e38 100%);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+}
+
+ul,
+ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+button {
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+img {
+	max-width: 100%;
+}
+
+input,
+textarea {
+	border: none;
+	outline: none;
 }
