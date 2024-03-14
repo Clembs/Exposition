@@ -1,13 +1,31 @@
 <script lang="ts">
 	import { movable } from '@svelte-put/movable';
 
+	const images = Object.values(
+		import.meta.glob('/static/*.{png,jpg,jpeg,PNG,JPEG,webp}', {
+			eager: true,
+			query: '?url',
+			import: 'default'
+		})
+	).map((image) => String(image).replace('/static', ''));
+
 	let sectionEl: HTMLElement;
 	let windowTitlebarEl: HTMLDivElement;
+
+	let currentImageIndex = 0;
 
 	let windowState: 'minimized' | 'maximized' | 'opened' | 'closed' = 'opened';
 
 	function toggleMaximize() {
 		windowState = windowState === 'maximized' ? 'opened' : 'maximized';
+	}
+
+	function toggleMinimize() {
+		windowState = windowState === 'minimized' ? 'opened' : 'minimized';
+	}
+
+	function close() {
+		windowState = 'closed';
 	}
 </script>
 
@@ -24,12 +42,11 @@
 			},
 			ignore: 'button'
 		}}
-		on:dblclick={toggleMaximize}
 	>
-		<div id="window-titlebar" bind:this={windowTitlebarEl}>
+		<div id="window-titlebar" bind:this={windowTitlebarEl} on:dblclick={toggleMaximize}>
 			<span aria-label="Titre de la fenêtre" id="window-titlebar-title"> Galerie </span>
 			<div id="window-titlebar-controls">
-				<button id="minimize" aria-label="Minimiser la fenêtre"></button>
+				<button id="minimize" aria-label="Minimiser la fenêtre" on:click={toggleMinimize}></button>
 				<button
 					id="toggle-maximize"
 					aria-label="{windowState === 'maximized' ? 'Restaurer' : 'Maximiser'} la fenêtre"
@@ -38,12 +55,28 @@
 				<button id="close" aria-label="Fermer la fenêtre"></button>
 			</div>
 		</div>
-		<article id="window-content">Saucisse purée</article>
+		<article id="window-content">
+			<img src={images[currentImageIndex]} alt="" />
+
+			<div id="buttons">
+				<button
+					on:click={() =>
+						(currentImageIndex = (currentImageIndex - 1 + images.length) % images.length)}
+				>
+					Précédent
+				</button>
+				<button on:click={() => (currentImageIndex = (currentImageIndex + 1) % images.length)}>
+					Suivant
+				</button>
+			</div>
+		</article>
 	</div>
 
 	<div id="taskbar">
-		<button>Start</button>
-		<button>Gallery</button>
+		<button id="start">Start</button>
+		{#if windowState !== 'closed'}
+			<button data-active={windowState === 'opened'} on:click={toggleMinimize}>Gallery</button>
+		{/if}
 	</div>
 </section>
 
@@ -53,11 +86,10 @@
 		border-left: 2px solid white;
 		border-right: 2px solid #393939;
 		border-bottom: 2px solid #393939;
-		background-color: var(--color-window-background);
+		background-color: hsl(0, 0%, 75%);
 	}
 
 	#gallery {
-		--color-window-background: hsl(0, 0%, 75%);
 		background-color: var(--color-win95-green);
 
 		height: 80vh;
@@ -66,12 +98,30 @@
 		display: flex;
 		flex-direction: column;
 
+		button {
+			@include windowBorder;
+			padding: 0.125rem 0.75rem;
+
+			&:hover {
+				background-color: hsl(0, 0%, 65%);
+				cursor: default;
+			}
+
+			&:active,
+			&[data-active='true'] {
+				border-bottom: 2px solid white;
+				border-right: 2px solid white;
+				border-top: 2px solid #393939;
+				border-left: 2px solid #393939;
+				background-color: hsl(0, 0%, 75%);
+			}
+		}
+
 		#window {
 			@include windowBorder;
 			position: absolute;
 			top: 25px;
 			left: 25px;
-			// transform: translate(-50%, -50%);
 			padding: 0.125rem;
 			resize: both;
 			overflow: auto;
@@ -104,6 +154,8 @@
 				color: white;
 				font-weight: bold;
 				padding: 0.25rem;
+				position: sticky;
+				inset: 0;
 
 				#window-titlebar-title {
 					user-select: none;
@@ -116,26 +168,39 @@
 					user-select: none;
 
 					button {
-						@include windowBorder;
 						height: 1.5rem;
 						width: 1.5rem;
-						&:hover {
-							background-color: hsl(0, 0%, 50%);
-							cursor: default;
-						}
+						padding: 0;
 					}
 				}
 			}
 			#window-content {
 				padding: 0.5rem;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 1rem;
+
+				img {
+					@include windowBorder;
+					width: auto;
+					max-height: 50vh;
+					height: 100%;
+				}
 			}
 		}
 
 		#taskbar {
-			margin-top: auto;
-			font-weight: bold;
 			@include windowBorder;
+			margin-top: auto;
 			z-index: 2;
+			padding: 0.125rem;
+
+			button {
+				&#start {
+					font-weight: bold;
+				}
+			}
 		}
 	}
 </style>
