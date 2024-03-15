@@ -3,11 +3,13 @@
 	import InfosPratiques from './InfosPratiques.svelte';
 	import Gallery from './Gallery.svelte';
 	import Billetterie from './Billetterie/Billetterie.svelte';
+	import FindUs from './FindUs.svelte';
 </script>
 
 <main>
 	<Hero />
 	<InfosPratiques />
 	<Gallery />
+	<FindUs />
 	<Billetterie />
 </main>

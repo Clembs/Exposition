@@ -96,7 +96,6 @@
 			border-radius: 99px;
 			padding: 0 1rem;
 			backdrop-filter: blur(4px);
-			text-transform: uppercase;
 			cursor: default;
 			text-shadow: 0 4px 4px rgb(0 0 0 / 0.25);
 
