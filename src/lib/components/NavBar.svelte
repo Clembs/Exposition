@@ -8,7 +8,7 @@
 			<a href="#galerie">Galerie</a>
 		</li>
 		<li>
-			<a href="/contact">Contact</a>
+			<a href="#contact">Contact</a>
 		</li>
 		<li>
 			<a id="billets" href="#billeterie">Billets</a>
