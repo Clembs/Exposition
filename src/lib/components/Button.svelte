@@ -178,9 +178,11 @@
 		&.visionos {
 			font-family: var(--font-modern);
 			// background-color: white;
-			background: rgba(94, 94, 94, 0.18);
+			mix-blend-mode: color-dodge;
+			background: rgba(255, 255, 255, 0.2);
 			backdrop-filter: blur(4px);
-			color: black;
+			color: white;
+			font-size: 1.25rem;
 			padding: 12px 20px;
 			border-radius: 99px;
 			cursor: url('/visionos-pointer.png'), auto;
