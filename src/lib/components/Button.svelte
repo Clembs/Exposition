@@ -11,16 +11,21 @@
 	export let style: Styles = 'default';
 </script>
 
-<a
-	{href}
-	target={href.startsWith('http') ? '_blank' : '_self'}
-	class="button {variant} {style}"
-	class:active
-	class:inline
->
-	<!-- {style} -->
-	<slot />
-</a>
+{#if href}
+	<a
+		{href}
+		target={href.startsWith('http') ? '_blank' : '_self'}
+		class="button {variant} {style}"
+		class:active
+		class:inline
+	>
+		<slot />
+	</a>
+{:else}
+	<button class="button {variant} {style}" class:active class:inline>
+		<slot />
+	</button>
+{/if}
 
 <style lang="scss">
 	.button {
