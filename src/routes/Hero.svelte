@@ -90,8 +90,8 @@
 		</div>
 
 		<div id="buttons">
-			<Button href="#ou-aller">Où nous trouver</Button>
-			<Button variant="outlined" href="#billeterie">Billetterie</Button>
+			<Button inline={false} href="#ou-aller">Où nous trouver</Button>
+			<Button inline={false} variant="outlined" href="#billeterie">Billetterie</Button>
 		</div>
 	</article>
 </header>

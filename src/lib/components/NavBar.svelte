@@ -18,12 +18,15 @@
 
 <style lang="scss">
 	nav {
+		font-family: var(--font-modern);
 		display: flex;
 		justify-content: space-between;
 		padding: 0.5rem 1rem;
 		position: sticky;
 		inset: 0;
 		align-items: center;
+		z-index: 99;
+		background-color: white;
 
 		ul {
 			display: flex;
