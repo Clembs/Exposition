@@ -6,30 +6,53 @@
 </script>
 
 <section id="contact">
-	<h2>Contactez-nous</h2>
+	<div id="contact-contents">
+		<h2>Contactez-nous</h2>
 
-	<form>
-		<label>
-			<input bind:value={email} type="email" placeholder="" />
-			<span>Email</span>
-		</label>
-		<label>
-			<textarea bind:value={message} placeholder=""></textarea>
-			<span>Message</span>
-		</label>
+		<form>
+			<label>
+				<input bind:value={email} type="email" placeholder="" />
+				<span>Email</span>
+			</label>
+			<label>
+				<textarea bind:value={message} placeholder=""></textarea>
+				<span>Message</span>
+			</label>
 
-		<Button disabled={!message || !email} style="md1" inline>Envoyer</Button>
-	</form>
+			<Button disabled={!message || !email} style="md1" inline>Envoyer</Button>
+		</form>
+	</div>
 </section>
 
 <style lang="scss">
 	#contact {
-		margin: 5rem auto;
+		position: relative;
+		background-color: #eeeeef;
+
+		&:before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			height: 40%;
+			background-color: #00b9d1;
+		}
+		// background-image: url('/material-design-wallpaper.jpg');
+		// background-size: cover;
+		padding: 5rem 1rem;
+		overflow: hidden;
+	}
+
+	#contact-contents {
+		z-index: 2;
+		position: relative;
+		margin: 0 auto;
 		max-width: 800px;
 		font-family: var(--font-modern);
 		box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.25);
 		padding: 2rem;
 		font-size: 1.1rem;
+		background-color: white;
+		border-radius: 0.25rem 0.25rem 0 0;
 
 		h2 {
 			margin-bottom: 1rem;
