@@ -24,7 +24,7 @@
 		<slot />
 	</a>
 {:else}
-	<button {disabled} class="button {variant} {style}" class:active class:inline>
+	<button on:click {disabled} class="button {variant} {style}" class:active class:inline>
 		<slot />
 	</button>
 {/if}
