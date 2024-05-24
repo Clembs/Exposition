@@ -3,24 +3,41 @@
 
 	let email = '';
 	let message = '';
+
+	let submitted = false;
 </script>
 
 <section id="contact">
 	<div id="contact-contents">
-		<h2>Contactez-nous</h2>
+		{#if submitted}
+			<h2>Merci pour votre message !</h2>
+			<p>
+				Prenez note que cette exposition n'est pas réelle et que nous ne sommes pas en mesure de
+				répondre à votre message. Mais merci quand même !
+			</p>
+		{:else}
+			<h2>Contactez-nous</h2>
 
-		<form>
-			<label>
-				<input bind:value={email} type="email" placeholder="" />
-				<span>Email</span>
-			</label>
-			<label>
-				<textarea bind:value={message} placeholder=""></textarea>
-				<span>Message</span>
-			</label>
+			<form>
+				<label>
+					<input bind:value={email} type="email" placeholder="" />
+					<span>Email</span>
+				</label>
+				<label>
+					<textarea bind:value={message} placeholder=""></textarea>
+					<span>Message</span>
+				</label>
 
-			<Button disabled={!message || !email} style="md1" inline>Envoyer</Button>
-		</form>
+				<Button
+					on:click={() => (submitted = true)}
+					disabled={!message || !email}
+					style="md1"
+					inline
+				>
+					Envoyer
+				</Button>
+			</form>
+		{/if}
 	</div>
 </section>
 
@@ -28,12 +45,13 @@
 	#contact {
 		position: relative;
 		background-color: #eeeeef;
+		height: 50vh;
 
 		&:before {
 			content: '';
 			position: absolute;
 			inset: 0;
-			height: 40%;
+			height: 150px;
 			background-color: #00b9d1;
 		}
 		// background-image: url('/material-design-wallpaper.jpg');
@@ -47,6 +65,7 @@
 		position: relative;
 		margin: 0 auto;
 		max-width: 800px;
+		min-width: 300px;
 		font-family: var(--font-modern);
 		box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.25);
 		padding: 2rem;
