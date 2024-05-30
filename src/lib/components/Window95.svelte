@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { movable } from '@svelte-put/movable';
+	import { createEventDispatcher } from 'svelte';
 
 	let windowTitlebarEl: HTMLDivElement;
 
@@ -9,19 +10,27 @@
 	export let y = 25;
 	export let width = '400px';
 	export let title;
-	// export let height = '80%';
+	export let height = '100px';
+	export let resizable = false;
+
+	const dispatch = createEventDispatcher();
 
 	function toggleMaximize() {
 		windowState = windowState === 'maximized' ? 'opened' : 'maximized';
+
+		dispatch('maximize', { maximized: windowState === 'maximized' });
 	}
 
 	function toggleMinimize() {
 		windowState = windowState === 'minimized' ? 'opened' : 'minimized';
+
+		dispatch('minimize', { minimized: windowState === 'minimized' });
 	}
 
 	function close() {
-		windowState = windowState === 'minimized' ? 'opened' : 'minimized';
-		// windowState = 'closed';
+		windowState = 'closed';
+
+		dispatch('close');
 	}
 </script>
 
@@ -29,7 +38,9 @@
 <div
 	id="window"
 	data-state={windowState}
-	style="--x: {x}px; --y: {y}px; --width: {width};"
+	style="--x: {x}px; --y: {y}px; --width: {width}; --height: {height}; --resizable: {resizable
+		? 'both'
+		: 'none'};"
 	use:movable={{
 		enabled: windowState !== 'maximized',
 		handle: windowTitlebarEl,
@@ -55,23 +66,27 @@
 					src="/windows-95-icons/minimize.png"
 					alt=""
 					aria-hidden
+					draggable="false"
 				/>
 			</button>
-			<button
-				class="btn-95"
-				id="toggle-maximize"
-				aria-label="{windowState === 'maximized' ? 'Restaurer' : 'Maximiser'} la fenêtre"
-				on:click={toggleMaximize}
-			>
-				<img
-					loading="eager"
-					width="15"
-					height="15"
-					src="/windows-95-icons/maximize.png"
-					alt=""
-					aria-hidden
-				/>
-			</button>
+			{#if resizable}
+				<button
+					class="btn-95"
+					id="toggle-maximize"
+					aria-label="{windowState === 'maximized' ? 'Restaurer' : 'Maximiser'} la fenêtre"
+					on:click={toggleMaximize}
+				>
+					<img
+						loading="eager"
+						width="15"
+						height="15"
+						src="/windows-95-icons/maximize.png"
+						alt=""
+						aria-hidden
+						draggable="false"
+					/>
+				</button>
+			{/if}
 			<button class="btn-95" id="close" aria-label="Fermer la fenêtre" on:click={close}>
 				<img
 					loading="eager"
@@ -80,6 +95,7 @@
 					src="/windows-95-icons/close.png"
 					alt=""
 					aria-hidden
+					draggable="false"
 				/>
 			</button>
 		</div>
@@ -98,10 +114,10 @@
 		top: var(--y);
 		left: var(--x);
 		padding: 0.125rem;
-		resize: both;
+		resize: var(--resizable);
 		overflow: auto;
 		min-width: 300px;
-		min-height: 600px;
+		min-height: var(--height);
 
 		&[data-state='opened'] {
 			width: var(--width);
@@ -128,14 +144,16 @@
 			background-color: hsl(240, 100%, 26%);
 			color: white;
 			font-weight: bold;
-			padding: 0.25rem;
+			padding: 0 0.25rem;
 			position: sticky;
 			inset: 0;
 			height: 2rem;
+			margin: 0.25rem;
+			user-select: none;
 
-			#window-titlebar-title {
-				user-select: none;
-			}
+			// #window-titlebar-title {
+			// 	user-select: none;
+			// }
 
 			#window-titlebar-controls {
 				display: flex;
@@ -145,7 +163,7 @@
 
 				button {
 					display: grid;
-					padding: 3px 4px;
+					padding: 4px 5px;
 
 					img {
 						image-rendering: pixelated;
@@ -156,7 +174,8 @@
 
 		#window-content {
 			height: calc(100% - 2rem);
-			padding: 0.5rem;
+			padding: 1rem;
+			user-select: none;
 		}
 	}
 </style>
