@@ -6,14 +6,19 @@
 
 	export let sectionEl: HTMLElement;
 	export let windowState: 'minimized' | 'maximized' | 'opened' | 'closed' = 'opened';
-	export let x = 25;
-	export let y = 25;
+	export let title: string;
+	export let x: number;
+	export let y: number;
 	export let width = '400px';
-	export let title;
 	export let height = '100px';
 	export let resizable = false;
+	export let focused = false;
 
 	const dispatch = createEventDispatcher();
+
+	function focus() {
+		dispatch('focus');
+	}
 
 	function toggleMaximize() {
 		windowState = windowState === 'maximized' ? 'opened' : 'maximized';
@@ -35,12 +40,20 @@
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
 	id="window"
 	data-state={windowState}
-	style="--x: {x}px; --y: {y}px; --width: {width}; --height: {height}; --resizable: {resizable
-		? 'both'
-		: 'none'};"
+	style="
+	--x: {x}px;
+	--y: {y}px;
+	--width: {width};
+	--height: {height};
+	--resizable: {resizable ? 'both' : 'none'};
+	"
+	aria-selected={focused}
+	on:focus={focus}
+	on:click={focus}
 	use:movable={{
 		enabled: windowState !== 'maximized',
 		handle: windowTitlebarEl,
@@ -51,7 +64,9 @@
 	}}
 >
 	<div id="window-titlebar" bind:this={windowTitlebarEl} on:dblclick={toggleMaximize}>
-		<span aria-label="Titre de la fenêtre" id="window-titlebar-title"> {title} </span>
+		<span aria-label="Titre de la fenêtre" id="window-titlebar-title">
+			{title}
+		</span>
 		<div id="window-titlebar-controls">
 			<button
 				class="btn-95"
@@ -119,6 +134,20 @@
 		min-width: 300px;
 		min-height: var(--height);
 
+		&[aria-selected='true'] {
+			z-index: 1;
+
+			#window-titlebar {
+				background-color: hsl(240, 100%, 26%);
+			}
+		}
+		&[aria-selected='false'] {
+			z-index: 0;
+
+			#window-titlebar {
+				background-color: hsl(233, 3%, 55%);
+			}
+		}
 		&[data-state='opened'] {
 			width: var(--width);
 		}
@@ -141,7 +170,6 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			background-color: hsl(240, 100%, 26%);
 			color: white;
 			font-weight: bold;
 			padding: 0 0.25rem;

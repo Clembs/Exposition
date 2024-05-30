@@ -17,7 +17,22 @@
 	let galleryWindowState: 'minimized' | 'maximized' | 'opened' | 'closed';
 	let aboutWindowState: 'minimized' | 'maximized' | 'opened' | 'closed';
 
+	let focusedWindow: 'gallery' | 'about' | null = 'about';
+
 	export let name = 'Vous';
+
+	function focusWindow(window: typeof focusedWindow) {
+		if (focusedWindow !== window) {
+			focusedWindow = window;
+		} else {
+			if (window === 'about') {
+				aboutWindowState = aboutWindowState === 'minimized' ? 'opened' : 'minimized';
+			}
+			if (window === 'gallery') {
+				galleryWindowState = galleryWindowState === 'minimized' ? 'opened' : 'minimized';
+			}
+		}
+	}
 </script>
 
 <section id="gallery" bind:this={sectionEl}>
@@ -26,7 +41,11 @@
 		{sectionEl}
 		title="Galerie"
 		height="600px"
+		x={25}
+		y={25}
 		resizable
+		focused={focusedWindow === 'gallery'}
+		on:focus={() => (focusedWindow = 'gallery')}
 	>
 		<div id="gallery-content">
 			<div>
@@ -62,7 +81,15 @@
 		</div>
 	</Window95>
 
-	<Window95 title="À propos" bind:sectionEl x={200} y={15} bind:windowState={aboutWindowState}>
+	<Window95
+		title="À propos"
+		bind:sectionEl
+		x={200}
+		y={50}
+		bind:windowState={aboutWindowState}
+		focused={focusedWindow === 'about'}
+		on:focus={() => (focusedWindow = 'about')}
+	>
 		<div id="about-content">
 			<div id="about-content-split">
 				<div id="about-image">
@@ -99,14 +126,15 @@
 		</div>
 	</Window95>
 
-	<div id="taskbar">
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
+	<div id="taskbar" on:click={() => (focusedWindow = null)} on:focus={() => (focusedWindow = null)}>
 		<button class="btn-95" id="start"> Démarrer </button>
 		{#if galleryWindowState !== 'closed'}
 			<button
 				class="btn-95"
-				data-active={galleryWindowState === 'opened'}
-				on:click={() =>
-					(galleryWindowState = galleryWindowState === 'minimized' ? 'opened' : 'minimized')}
+				data-active={galleryWindowState === 'opened' && focusedWindow === 'gallery'}
+				on:click|stopPropagation={() => focusWindow('gallery')}
 			>
 				Galerie
 			</button>
@@ -114,9 +142,8 @@
 		{#if aboutWindowState !== 'closed'}
 			<button
 				class="btn-95"
-				data-active={aboutWindowState === 'opened'}
-				on:click={() =>
-					(aboutWindowState = aboutWindowState === 'minimized' ? 'opened' : 'minimized')}
+				data-active={aboutWindowState === 'opened' && focusedWindow === 'about'}
+				on:click|stopPropagation={() => focusWindow('about')}
 			>
 				À propos
 			</button>
@@ -130,7 +157,7 @@
 	#gallery {
 		background-color: var(--color-win95-green);
 
-		height: 700px;
+		height: 800px;
 		position: relative;
 		font-family: var(--font-retro);
 		display: flex;
@@ -196,7 +223,7 @@
 				gap: 1rem;
 			}
 			#about-image {
-				flex-shrink: 0%;
+				flex-shrink: 0;
 
 				img {
 					image-rendering: pixelated;
