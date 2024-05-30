@@ -10,6 +10,8 @@
 	).map((image) => String(image));
 
 	let currentImageIndex = 0;
+	$: previousImageIndex = currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1;
+	$: nextImageIndex = currentImageIndex === images.length - 1 ? 0 : currentImageIndex + 1;
 
 	let sectionEl: HTMLElement;
 	let galleryWindowState: 'minimized' | 'maximized' | 'opened' | 'closed';
@@ -18,22 +20,25 @@
 <section id="gallery" bind:this={sectionEl}>
 	<Window95 bind:windowState={galleryWindowState} {sectionEl} title="Galerie">
 		<div id="gallery-content">
-			<img src={images[currentImageIndex]} alt="" />
+			<img fetchpriority="high" loading="eager" src={images[currentImageIndex]} alt="" />
 
 			<div id="buttons">
-				<button
+				<a
+					data-sveltekit-preload-data="hover"
+					href={images[previousImageIndex]}
 					class="btn-95"
-					on:click={() =>
-						(currentImageIndex = (currentImageIndex - 1 + images.length) % images.length)}
+					on:click|preventDefault={() => (currentImageIndex = previousImageIndex)}
 				>
 					Précédent
-				</button>
-				<button
+				</a>
+				<a
+					data-sveltekit-preload-data="hover"
+					href={images[nextImageIndex]}
 					class="btn-95"
-					on:click={() => (currentImageIndex = (currentImageIndex + 1) % images.length)}
+					on:click|preventDefault={() => (currentImageIndex = nextImageIndex)}
 				>
 					Suivant
-				</button>
+				</a>
 			</div>
 		</div>
 	</Window95>
