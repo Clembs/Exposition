@@ -286,12 +286,30 @@
 				image-rendering: pixelated;
 
 				&-text {
-					margin-top: 3px;
+					margin-top: 2px;
+					font-size: 1.1rem;
 				}
 
 				&#start,
 				&[data-active='true'] {
 					font-weight: bold;
+				}
+
+				&[data-active='true'] {
+					background-image: linear-gradient(
+							45deg,
+							#fff 25%,
+							transparent 25%,
+							transparent 75%,
+							#fff 75%,
+							#fff
+						),
+						linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
+					background-size: 6px 6px;
+					background-position:
+						0 0,
+						3px 3px;
+					background-repeat: repeat;
 				}
 
 				&:not(#start) {
