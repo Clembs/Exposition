@@ -54,7 +54,7 @@
 	</Window95>
 
 	<div id="taskbar">
-		<button class="btn-95" id="start">Start</button>
+		<button class="btn-95" id="start"> Démarrer </button>
 		{#if galleryWindowState !== 'closed'}
 			<button
 				class="btn-95"
@@ -138,11 +138,20 @@
 			@include windowBorder;
 			margin-top: auto;
 			z-index: 2;
-			padding: 0.125rem;
+			padding: 0.375rem;
 
 			button {
-				&#start {
+				text-align: left;
+
+				padding: 0.25rem 0.5rem;
+
+				&#start,
+				&[data-active='true'] {
 					font-weight: bold;
+				}
+
+				&:not(#start) {
+					width: 200px;
 				}
 			}
 		}
