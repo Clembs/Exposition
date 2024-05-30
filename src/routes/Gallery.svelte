@@ -2,7 +2,7 @@
 	import { movable } from '@svelte-put/movable';
 
 	const images = Object.values(
-		import.meta.glob('/static/*.{png,jpg,jpeg,PNG,JPEG,webp}', {
+		import.meta.glob('$lib/gallery/*.{png,jpg,jpeg,PNG,JPEG,webp}', {
 			eager: true,
 			query: '?url',
 			import: 'default'
