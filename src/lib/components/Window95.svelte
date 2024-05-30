@@ -74,7 +74,7 @@
 		resize: both;
 		overflow: auto;
 		min-width: 300px;
-		min-height: 200px;
+		min-height: 600px;
 
 		&[data-state='opened'] {
 			width: var(--width);
@@ -104,6 +104,7 @@
 			padding: 0.25rem;
 			position: sticky;
 			inset: 0;
+			height: 2rem;
 
 			#window-titlebar-title {
 				user-select: none;
@@ -122,12 +123,10 @@
 				}
 			}
 		}
+
 		#window-content {
+			height: calc(100% - 2rem);
 			padding: 0.5rem;
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 1rem;
 		}
 	}
 </style>
