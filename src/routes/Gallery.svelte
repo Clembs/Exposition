@@ -15,10 +15,19 @@
 
 	let sectionEl: HTMLElement;
 	let galleryWindowState: 'minimized' | 'maximized' | 'opened' | 'closed';
+	let aboutWindowState: 'minimized' | 'maximized' | 'opened' | 'closed';
+
+	export let name = 'Vous';
 </script>
 
 <section id="gallery" bind:this={sectionEl}>
-	<Window95 bind:windowState={galleryWindowState} {sectionEl} title="Galerie">
+	<Window95
+		bind:windowState={galleryWindowState}
+		{sectionEl}
+		title="Galerie"
+		height="600px"
+		resizable
+	>
 		<div id="gallery-content">
 			<div>
 				<img fetchpriority="high" loading="eager" src={images[currentImageIndex]} alt="" />
@@ -53,6 +62,43 @@
 		</div>
 	</Window95>
 
+	<Window95 title="À propos" bind:sectionEl x={200} y={15} bind:windowState={aboutWindowState}>
+		<div id="about-content">
+			<div id="about-content-split">
+				<div id="about-image">
+					<img
+						loading="eager"
+						src="/windows-95-icons/globe.png"
+						alt="À propos"
+						width="48"
+						height="48"
+						draggable="false"
+					/>
+				</div>
+
+				<div id="about-text">
+					De la mécanique au numérique<br />
+					Copyright © 2024-2024 Team 20.<br />
+					<br />
+					Produit par :
+					<ul>
+						<li>Ellisa Ee</li>
+						<li>Gérald Leban</li>
+						<li>Kylian Pawilowski</li>
+						<li>Clément Voisin</li>
+					</ul>
+					<br />
+					Ce produit est licencié pour :<br />
+					{name}
+				</div>
+			</div>
+
+			<div id="bottom-actions">
+				<button class="btn-95" on:click={() => (aboutWindowState = 'closed')}>OK</button>
+			</div>
+		</div>
+	</Window95>
+
 	<div id="taskbar">
 		<button class="btn-95" id="start"> Démarrer </button>
 		{#if galleryWindowState !== 'closed'}
@@ -63,6 +109,16 @@
 					(galleryWindowState = galleryWindowState === 'minimized' ? 'opened' : 'minimized')}
 			>
 				Galerie
+			</button>
+		{/if}
+		{#if aboutWindowState !== 'closed'}
+			<button
+				class="btn-95"
+				data-active={aboutWindowState === 'opened'}
+				on:click={() =>
+					(aboutWindowState = aboutWindowState === 'minimized' ? 'opened' : 'minimized')}
+			>
+				À propos
 			</button>
 		{/if}
 	</div>
@@ -131,6 +187,31 @@
 				width: auto;
 				max-height: 50vh;
 				height: 100%;
+			}
+		}
+
+		#about-content {
+			#about-content-split {
+				display: flex;
+				gap: 1rem;
+			}
+			#about-image {
+				flex-shrink: 0%;
+
+				img {
+					image-rendering: pixelated;
+				}
+			}
+
+			ul {
+				list-style: square;
+				padding: 0 1rem;
+			}
+
+			#bottom-actions {
+				display: flex;
+				justify-content: flex-end;
+				margin-top: 1rem;
 			}
 		}
 
