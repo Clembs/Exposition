@@ -1,15 +1,15 @@
-@mixin windowBorder {
+@mixin windowBorder($intensity: 2px) {
 	box-shadow:
-		-1px -1px inset #000,
-		-2px -2px inset #808080,
-		1px 1px inset white,
-		2px 2px inset #dfdfdf;
+		(-$intensity) (-$intensity) inset #000,
+		(-$intensity * 2) (-$intensity * 2) inset #808080,
+		($intensity) ($intensity) inset white,
+		($intensity * 2) ($intensity * 2) inset #dfdfdf;
 	background-color: #c0c0c0;
 }
 
 .btn-95 {
 	@include windowBorder;
-	padding: 0.25rem 1.5rem;
+	padding: 0.175rem 2rem;
 
 	&:hover {
 		background-color: hsl(0, 0%, 65%);
@@ -28,5 +28,16 @@
 	&:focus-visible,
 	&:active {
 		outline: 2px solid #000;
+		position: relative;
+
+		&::before {
+			position: absolute;
+			content: '';
+			top: 4px;
+			left: 4px;
+			width: calc(100% - 12px);
+			height: calc(100% - 12px);
+			border: 2px dotted #000;
+		}
 	}
 }
