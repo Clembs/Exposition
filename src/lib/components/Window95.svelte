@@ -1,0 +1,133 @@
+<script lang="ts">
+	import { movable } from '@svelte-put/movable';
+
+	let windowTitlebarEl: HTMLDivElement;
+
+	export let sectionEl: HTMLElement;
+	export let windowState: 'minimized' | 'maximized' | 'opened' | 'closed' = 'opened';
+	export let x = 25;
+	export let y = 25;
+	export let width = '400px';
+	export let title;
+	// export let height = '80%';
+
+	function toggleMaximize() {
+		windowState = windowState === 'maximized' ? 'opened' : 'maximized';
+	}
+
+	function toggleMinimize() {
+		windowState = windowState === 'minimized' ? 'opened' : 'minimized';
+	}
+
+	function close() {
+		windowState = windowState === 'minimized' ? 'opened' : 'minimized';
+		// windowState = 'closed';
+	}
+</script>
+
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<div
+	id="window"
+	data-state={windowState}
+	style="--x: {x}px; --y: {y}px; --width: {width};"
+	use:movable={{
+		enabled: windowState !== 'maximized',
+		handle: windowTitlebarEl,
+		limit: {
+			parent: sectionEl
+		},
+		ignore: 'button'
+	}}
+>
+	<div id="window-titlebar" bind:this={windowTitlebarEl} on:dblclick={toggleMaximize}>
+		<span aria-label="Titre de la fenêtre" id="window-titlebar-title"> {title} </span>
+		<div id="window-titlebar-controls">
+			<button
+				class="btn-95"
+				id="minimize"
+				aria-label="Minimiser la fenêtre"
+				on:click={toggleMinimize}
+			></button>
+			<button
+				class="btn-95"
+				id="toggle-maximize"
+				aria-label="{windowState === 'maximized' ? 'Restaurer' : 'Maximiser'} la fenêtre"
+				on:click={toggleMaximize}
+			></button>
+			<button class="btn-95" id="close" aria-label="Fermer la fenêtre" on:click={close}></button>
+		</div>
+	</div>
+	<article id="window-content">
+		<slot />
+	</article>
+</div>
+
+<style lang="scss">
+	@import '../../styles/utils.scss';
+
+	#window {
+		@include windowBorder;
+		position: absolute;
+		top: var(--y);
+		left: var(--x);
+		padding: 0.125rem;
+		resize: both;
+		overflow: auto;
+		min-width: 300px;
+		min-height: 200px;
+
+		&[data-state='opened'] {
+			width: var(--width);
+		}
+		&[data-state='closed'] {
+			display: none;
+		}
+		&[data-state='minimized'] {
+			display: none;
+		}
+		&[data-state='maximized'] {
+			top: 0 !important;
+			left: 0 !important;
+			width: 100% !important;
+			height: 100% !important;
+			position: unset;
+			resize: none;
+		}
+
+		#window-titlebar {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: hsl(240, 100%, 26%);
+			color: white;
+			font-weight: bold;
+			padding: 0.25rem;
+			position: sticky;
+			inset: 0;
+
+			#window-titlebar-title {
+				user-select: none;
+			}
+
+			#window-titlebar-controls {
+				display: flex;
+				gap: 0.25rem;
+				align-items: center;
+				user-select: none;
+
+				button {
+					height: 1.5rem;
+					width: 1.5rem;
+					padding: 0;
+				}
+			}
+		}
+		#window-content {
+			padding: 0.5rem;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 1rem;
+		}
+	}
+</style>
