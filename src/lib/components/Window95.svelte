@@ -47,14 +47,41 @@
 				id="minimize"
 				aria-label="Minimiser la fenêtre"
 				on:click={toggleMinimize}
-			></button>
+			>
+				<img
+					loading="eager"
+					width="15"
+					height="15"
+					src="/windows-95-icons/minimize.png"
+					alt=""
+					aria-hidden
+				/>
+			</button>
 			<button
 				class="btn-95"
 				id="toggle-maximize"
 				aria-label="{windowState === 'maximized' ? 'Restaurer' : 'Maximiser'} la fenêtre"
 				on:click={toggleMaximize}
-			></button>
-			<button class="btn-95" id="close" aria-label="Fermer la fenêtre" on:click={close}></button>
+			>
+				<img
+					loading="eager"
+					width="15"
+					height="15"
+					src="/windows-95-icons/maximize.png"
+					alt=""
+					aria-hidden
+				/>
+			</button>
+			<button class="btn-95" id="close" aria-label="Fermer la fenêtre" on:click={close}>
+				<img
+					loading="eager"
+					width="15"
+					height="15"
+					src="/windows-95-icons/close.png"
+					alt=""
+					aria-hidden
+				/>
+			</button>
 		</div>
 	</div>
 	<article id="window-content">
@@ -117,9 +144,12 @@
 				user-select: none;
 
 				button {
-					height: 1.5rem;
-					width: 1.5rem;
-					padding: 0;
+					display: grid;
+					padding: 3px 4px;
+
+					img {
+						image-rendering: pixelated;
+					}
 				}
 			}
 		}
