@@ -20,25 +20,29 @@
 <section id="gallery" bind:this={sectionEl}>
 	<Window95 bind:windowState={galleryWindowState} {sectionEl} title="Galerie">
 		<div id="gallery-content">
-			<img fetchpriority="high" loading="eager" src={images[currentImageIndex]} alt="" />
+			<div>
+				<img fetchpriority="high" loading="eager" src={images[currentImageIndex]} alt="" />
+			</div>
 
-			<div id="buttons">
-				<a
-					data-sveltekit-preload-data="hover"
-					href={images[previousImageIndex]}
-					class="btn-95"
-					on:click|preventDefault={() => (currentImageIndex = previousImageIndex)}
-				>
-					Précédent
-				</a>
-				<a
-					data-sveltekit-preload-data="hover"
-					href={images[nextImageIndex]}
-					class="btn-95"
-					on:click|preventDefault={() => (currentImageIndex = nextImageIndex)}
-				>
-					Suivant
-				</a>
+			<div id="gallery-bottom">
+				<div id="buttons">
+					<a
+						data-sveltekit-preload-data="hover"
+						href={images[previousImageIndex]}
+						class="btn-95"
+						on:click|preventDefault={() => (currentImageIndex = previousImageIndex)}
+					>
+						Précédent
+					</a>
+					<a
+						data-sveltekit-preload-data="hover"
+						href={images[nextImageIndex]}
+						class="btn-95"
+						on:click|preventDefault={() => (currentImageIndex = nextImageIndex)}
+					>
+						Suivant
+					</a>
+				</div>
 			</div>
 		</div>
 	</Window95>
@@ -64,18 +68,41 @@
 	#gallery {
 		background-color: var(--color-win95-green);
 
-		height: 80vh;
+		height: 700px;
 		position: relative;
 		font-family: var(--font-retro);
 		display: flex;
 		flex-direction: column;
 
 		#gallery-content {
-			padding: 0.5rem;
 			display: flex;
 			flex-direction: column;
-			align-items: flex-start;
-			gap: 1rem;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto;
+			gap: 0.5rem;
+			width: fit-content;
+			height: 100%;
+
+			#gallery-bottom {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 0.5rem;
+				width: 100%;
+
+				#buttons {
+					display: flex;
+					gap: 0.5rem;
+					width: 100%;
+
+					a {
+						display: flex;
+						justify-content: center;
+						width: 100%;
+					}
+				}
+			}
 
 			img {
 				@include windowBorder;
