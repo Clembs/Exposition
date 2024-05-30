@@ -25,6 +25,12 @@
 			</div>
 
 			<div id="gallery-bottom">
+				<div id="gallery-progress">
+					{#each images as _, index}
+						<span class="gallery-progress-block" class:filled={index <= currentImageIndex}></span>
+					{/each}
+				</div>
+
 				<div id="buttons">
 					<a
 						data-sveltekit-preload-data="hover"
@@ -90,6 +96,22 @@
 				align-items: center;
 				gap: 0.5rem;
 				width: 100%;
+
+				#gallery-progress {
+					display: flex;
+					gap: 0.25rem;
+					width: 100%;
+
+					.gallery-progress-block {
+						width: 100%;
+						height: 0.75rem;
+						border: 1px solid black;
+						background-color: var(--color-rock-gray);
+						&.filled {
+							background-color: #000085;
+						}
+					}
+				}
 
 				#buttons {
 					display: flex;
