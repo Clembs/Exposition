@@ -40,6 +40,7 @@
 		bind:windowState={galleryWindowState}
 		{sectionEl}
 		title="Galerie"
+		iconPath="/windows-95-icons/paint.png"
 		height="600px"
 		x={25}
 		y={25}
@@ -83,6 +84,7 @@
 
 	<Window95
 		title="À propos"
+		iconPath="/windows-95-icons/about-windows.png"
 		bind:sectionEl
 		x={200}
 		y={50}
@@ -117,6 +119,10 @@
 					<br />
 					Ce produit est licencié pour :<br />
 					{name}
+
+					<hr />
+
+					Windows, Microsoft et le logo Windows sont des marques déposées de Microsoft Corporation.
 				</div>
 			</div>
 
@@ -129,23 +135,46 @@
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div id="taskbar" on:click={() => (focusedWindow = null)} on:focus={() => (focusedWindow = null)}>
-		<button class="btn-95" id="start"> Démarrer </button>
+		<button class="btn-95 taskbar-item" id="start">
+			<img
+				loading="eager"
+				width="24"
+				height="24"
+				src="/windows-95-icons/windows-logo.png"
+				alt="Icône pour Démarrer"
+			/>
+			<span class="taskbar-item-text"> Démarrer </span>
+		</button>
 		{#if galleryWindowState !== 'closed'}
 			<button
-				class="btn-95"
+				class="btn-95 taskbar-item"
 				data-active={galleryWindowState === 'opened' && focusedWindow === 'gallery'}
 				on:click|stopPropagation={() => focusWindow('gallery')}
 			>
-				Galerie
+				<img
+					loading="eager"
+					width="24"
+					height="24"
+					src="/windows-95-icons/paint.png"
+					alt="Icône pour Galerie"
+				/>
+				<span class="taskbar-item-text"> Galerie </span>
 			</button>
 		{/if}
 		{#if aboutWindowState !== 'closed'}
 			<button
-				class="btn-95"
+				class="btn-95 taskbar-item"
 				data-active={aboutWindowState === 'opened' && focusedWindow === 'about'}
 				on:click|stopPropagation={() => focusWindow('about')}
 			>
-				À propos
+				<img
+					loading="eager"
+					width="24"
+					height="24"
+					src="/windows-95-icons/about-windows.png"
+					alt="Icône pour À propos"
+				/>
+				<span class="taskbar-item-text"> À propos </span>
 			</button>
 		{/if}
 	</div>
@@ -248,10 +277,17 @@
 			z-index: 2;
 			padding: 0.375rem;
 
-			button {
+			.taskbar-item {
 				text-align: left;
-
 				padding: 0.25rem 0.5rem;
+				display: inline-flex;
+				align-items: center;
+				gap: 0.25rem;
+				image-rendering: pixelated;
+
+				&-text {
+					margin-top: 3px;
+				}
 
 				&#start,
 				&[data-active='true'] {

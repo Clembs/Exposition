@@ -7,6 +7,7 @@
 	export let sectionEl: HTMLElement;
 	export let windowState: 'minimized' | 'maximized' | 'opened' | 'closed' = 'opened';
 	export let title: string;
+	export let iconPath = '';
 	export let x: number;
 	export let y: number;
 	export let width = '400px';
@@ -64,9 +65,21 @@
 	}}
 >
 	<div id="window-titlebar" bind:this={windowTitlebarEl} on:dblclick={toggleMaximize}>
-		<span aria-label="Titre de la fenêtre" id="window-titlebar-title">
-			{title}
-		</span>
+		<div aria-label="Titre de la fenêtre" class="window-titlebar-title">
+			{#if iconPath}
+				<img
+					loading="eager"
+					width="24"
+					height="24"
+					class="window-titlebar-icon"
+					src={iconPath}
+					alt="Icône pour {title}"
+				/>
+			{/if}
+			<span class="window-titlebar-text">
+				{title}
+			</span>
+		</div>
 		<div id="window-titlebar-controls">
 			<button
 				class="btn-95"
@@ -175,13 +188,20 @@
 			padding: 0 0.25rem;
 			position: sticky;
 			inset: 0;
-			height: 2rem;
+			height: 1.75rem;
 			margin: 0.25rem;
 			user-select: none;
 
-			// #window-titlebar-title {
-			// 	user-select: none;
-			// }
+			.window-titlebar-title {
+				display: flex;
+				align-items: center;
+				image-rendering: pixelated;
+				gap: 0.125rem;
+
+				.window-titlebar-text {
+					margin-top: 3px;
+				}
+			}
 
 			#window-titlebar-controls {
 				display: flex;
@@ -201,7 +221,7 @@
 		}
 
 		#window-content {
-			height: calc(100% - 2rem);
+			height: calc(100% - 1.75rem);
 			padding: 1rem;
 			user-select: none;
 		}
