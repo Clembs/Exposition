@@ -97,6 +97,7 @@
 
 <style lang="scss">
 	section {
+		cursor: url('visionos-pointer.png'), auto;
 		font-family: var(--font-modern);
 		color: white;
 		font-size: 20px;

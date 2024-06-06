@@ -16,7 +16,6 @@
 
 <style lang="scss">
 	.window {
-		cursor: url('visionos-pointer.png'), auto;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
