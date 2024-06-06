@@ -1,4 +1,5 @@
 <script>
+	import Billetterie from './Billetterie/Billetterie.svelte';
 	import Hero from './Hero.svelte';
 	import Presentation from './Presentation.svelte';
 	import InfosPratiques from './InfosPratiques.svelte';
@@ -12,4 +13,5 @@
 	<InfosPratiques />
 	<Gallery />
 	<FindUs />
+	<Billetterie />
 </main>

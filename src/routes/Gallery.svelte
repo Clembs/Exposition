@@ -34,7 +34,7 @@
 		}
 	}
 
-	export let name: string;
+	export let name = '';
 </script>
 
 <section id="gallery" bind:this={sectionEl}>

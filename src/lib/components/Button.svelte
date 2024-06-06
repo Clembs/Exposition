@@ -11,16 +11,21 @@
 	export let style: Styles = 'default';
 </script>
 
-<a
-	{href}
-	target={href.startsWith('http') ? '_blank' : '_self'}
-	class="button {variant} {style}"
-	class:active
-	class:inline
->
-	<!-- {style} -->
-	<slot />
-</a>
+{#if href}
+	<a
+		{href}
+		target={href.startsWith('http') ? '_blank' : '_self'}
+		class="button {variant} {style}"
+		class:active
+		class:inline
+	>
+		<slot />
+	</a>
+{:else}
+	<button class="button {variant} {style}" class:active class:inline>
+		<slot />
+	</button>
+{/if}
 
 <style lang="scss">
 	.button {
@@ -177,9 +182,11 @@
 		&.visionos {
 			font-family: var(--font-modern);
 			// background-color: white;
-			background: rgba(94, 94, 94, 0.18);
+			mix-blend-mode: color-dodge;
+			background: rgba(255, 255, 255, 0.2);
 			backdrop-filter: blur(4px);
-			color: black;
+			color: white;
+			font-size: 1.25rem;
 			padding: 12px 20px;
 			border-radius: 99px;
 			cursor: url('/visionos-pointer.png'), auto;
