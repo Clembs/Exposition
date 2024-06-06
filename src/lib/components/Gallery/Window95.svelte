@@ -134,7 +134,7 @@
 </div>
 
 <style lang="scss">
-	@import '../../styles/utils.scss';
+	@import '../../../styles/utils.scss';
 
 	#window {
 		@include windowBorder;
@@ -175,7 +175,6 @@
 			left: 0 !important;
 			width: 100% !important;
 			height: 100% !important;
-			position: unset;
 			resize: none;
 		}
 
