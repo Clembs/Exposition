@@ -2,7 +2,7 @@
 	import Button from '$lib/components/Button.svelte';
 	import VisionWindow from './VisionWindow.svelte';
 
-	let name = '';
+	export let name = '';
 	let date = '';
 	let time = '';
 

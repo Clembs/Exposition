@@ -2,7 +2,7 @@
 	import Window95 from './Window95.svelte';
 
 	export let sectionEl: HTMLElement;
-	export let name = 'Vous';
+	export let name = '';
 	export let windowState: 'minimized' | 'maximized' | 'opened' | 'closed';
 	export let focusedWindow: 'gallery' | 'about' | null;
 </script>
@@ -43,7 +43,7 @@
 				</ul>
 				<br />
 				Ce produit est licencié pour :<br />
-				{name}
+				{name || 'Vous'}
 
 				<hr />
 
