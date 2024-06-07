@@ -1,28 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
-	import { readable } from 'svelte/store';
 	import { dragscroll } from '@svelte-put/dragscroll';
-
-	const startDate = new Date('2024-06-17T00:00:00');
-
-	function timeDistanceFromNow(date: Date) {
-		const distance = date.getTime() - Date.now();
-
-		const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-		const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-		const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-		const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-		return `${days}j ${hours}h ${minutes}m ${seconds}s`;
-	}
-
-	const timeRemaining = readable(timeDistanceFromNow(startDate), (set) => {
-		const interval = setInterval(() => {
-			set(timeDistanceFromNow(startDate));
-		}, 1000);
-
-		return () => clearInterval(interval);
-	});
 
 	let showHint = true;
 </script>
@@ -70,29 +48,8 @@
 	</div>
 
 	<article>
-		<div id="dates-location">
-			<p class="small-text">
-				Du <time datetime="2024-06-17">17</time>
-				au <time datetime="2024-06-21">21 juin</time>
-				2024
-			</p>
-
-			<div id="countdown">
-				{#each $timeRemaining as time}
-					{time}
-				{/each}
-			</div>
-
-			<a href="#ou-aller" class="small-text">
-				CRDoc, IUT Rangueil <br />
-				31400 Toulouse
-			</a>
-		</div>
-
-		<div id="buttons">
-			<Button inline={false} href="#ou-aller">Où nous trouver</Button>
-			<Button inline={false} variant="outlined" href="#billeterie">Billetterie</Button>
-		</div>
+		<Button inline={false} href="/exposition">Visiter l'exposition virtuelle</Button>
+		<Button inline={false} variant="outlined" href="/#à-propos">En savoir plus</Button>
 	</article>
 </header>
 
@@ -105,7 +62,8 @@
 		justify-content: center;
 		text-align: center;
 		gap: 2rem;
-		margin: 2rem 0;
+		margin: 5rem 0;
+		margin-top: 7rem;
 
 		#hero-text {
 			display: flex;
@@ -227,55 +185,16 @@
 		article {
 			border: 2px solid var(--color-rock-gray);
 			border-radius: 2.5rem;
+			padding: 1rem;
 			display: flex;
-			align-items: center;
+			gap: 1rem;
 			margin: 0 2rem;
 			box-shadow: 0 4px 10px 0 rgb(0 0 0 / 15%);
 
-			#dates-location {
-				display: flex;
-				flex-direction: column;
-				gap: 0.75rem;
-				padding: 1rem 2rem;
-				min-width: 290px;
-
-				.small-text {
-					color: var(--color-space-gray);
-					margin: 0;
-
-					&:link:hover {
-						text-decoration: underline;
-					}
-				}
-
-				#countdown {
-					font-size: 2rem;
-					font-weight: bold;
-				}
-			}
-
-			#buttons {
-				display: flex;
-				flex-direction: column;
-				gap: 1rem;
-				padding: 1rem;
-				justify-content: center;
-				border-left: 2px solid var(--color-rock-gray);
-				height: 100%;
-			}
-
 			@media screen and (max-width: 768px) {
 				flex-direction: column;
-
-				#dates-location {
-					min-width: none;
-				}
-
-				#buttons {
-					border-left: none;
-					border-top: 1px solid var(--color-rock-gray);
-					width: 100%;
-				}
+				gap: 0.5rem;
+				width: calc(100% - 2rem);
 			}
 		}
 	}
