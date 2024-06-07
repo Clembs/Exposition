@@ -1,17 +1,17 @@
 <nav>
-	<a href="/">Equipe</a>
+	<a href="/">De la mécanique au numérique</a>
 	<ul>
 		<li>
-			<a href="#à-propos">À propos</a>
+			<a href="/#à-propos">À propos</a>
 		</li>
 		<li>
-			<a href="#galerie">Galerie</a>
+			<a href="/#galerie">Galerie</a>
 		</li>
 		<li>
-			<a href="/contact">Contact</a>
+			<a href="/#contact">Contact</a>
 		</li>
 		<li>
-			<a id="billets" href="#billeterie">Billets</a>
+			<a href="/#billeterie" id="billets">Exposition</a>
 		</li>
 	</ul>
 </nav>
@@ -22,11 +22,13 @@
 		display: flex;
 		justify-content: space-between;
 		padding: 0.5rem 1rem;
-		position: sticky;
-		inset: 0;
+		position: fixed;
+		top: 0;
+		left: 0;
 		align-items: center;
 		z-index: 99;
 		background-color: white;
+		width: 100%;
 
 		ul {
 			display: flex;
