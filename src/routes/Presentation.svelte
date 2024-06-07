@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<section id="presentation">
+<section id="à-propos">
 	<div id="presentation-wrapper">
 		<svg
 			width="459"
@@ -57,7 +57,7 @@
 </section>
 
 <style lang="scss">
-	#presentation {
+	#à-propos {
 		font-family: var(--font-old-school);
 		padding: 2rem;
 		min-height: 70vh;

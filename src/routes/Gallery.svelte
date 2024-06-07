@@ -37,7 +37,7 @@
 	export let name = '';
 </script>
 
-<section id="gallery" bind:this={sectionEl}>
+<section id="galerie" bind:this={sectionEl}>
 	<ul id="desktop">
 		<li class="shortcut">
 			<button on:dblclick={() => openWindow('gallery')}>
@@ -82,7 +82,7 @@
 </section>
 
 <style lang="scss">
-	#gallery {
+	#galerie {
 		background-color: var(--color-win95-green);
 		image-rendering: pixelated;
 
