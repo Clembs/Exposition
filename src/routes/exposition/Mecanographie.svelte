@@ -3,7 +3,7 @@
 	import tabulatrice from '$lib/images/mecanographie/tabulatrice';
 </script>
 
-<section>
+<section id="mécanographie">
 	<div class="contents">
 		<h2>Partie 1 : la mécanographie</h2>
 		<p>
