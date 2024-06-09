@@ -8,7 +8,7 @@
 
 <button class="image-with-modal" on:click={() => dialog.showModal()}>
 	<figure>
-		<img src={image.src} alt={image.alt} />
+		<img loading="lazy" src={image.src} alt={image.alt} />
 		<figcaption>
 			{image.title}
 		</figcaption>
@@ -19,7 +19,7 @@
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <dialog bind:this={dialog} class="image-modal" on:click|self={() => dialog.close()}>
 	<div class="image-modal-contents">
-		<img src={image.src} alt={image.alt} />
+		<img loading="lazy" src={image.src} alt={image.alt} />
 		<div class="image-info">
 			<div class="image-info-text">
 				<div class="image-title">{image.title}</div>
@@ -27,13 +27,19 @@
 			</div>
 
 			<div class="image-info-sources">
-				<h3>Sources</h3>
+				<h3>En savoir plus</h3>
 
 				<ul>
 					{#each image.sources as source}
 						<li>
 							<a href={source.url} target="_blank" rel="noopener noreferrer">
-								<img width="32" height="32" src={source.iconUrl} alt="Lien externe" />
+								<img
+									loading="lazy"
+									width="32"
+									height="32"
+									src={source.iconUrl}
+									alt="Icône du site {source.title}"
+								/>
 								<div class="source-text">
 									<div class="source-title">
 										{source.title}
@@ -62,7 +68,9 @@
 						{:else}
 							{image.attribution.author}
 						{/if}
-						(License {image.attribution.license})
+						{#if image.attribution.license}
+							(License {image.attribution.license})
+						{/if}
 					</div>
 				{/if}
 			</div>
@@ -75,6 +83,7 @@
 		cursor: zoom-in;
 		border: 0;
 		padding: 0;
+		width: 100%;
 
 		figure {
 			margin: 1rem;
