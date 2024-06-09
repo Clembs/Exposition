@@ -1,11 +1,12 @@
 <script lang="ts">
 	import type { Image } from '$lib/images';
+	import { dragscroll } from '@svelte-put/dragscroll';
 	import ImageModal from './ImageModal.svelte';
 
 	export let images: Image[];
 </script>
 
-<ul class="image-gallery">
+<ul class="image-gallery" use:dragscroll>
 	{#each images as image}
 		<li>
 			<ImageModal {image} />
