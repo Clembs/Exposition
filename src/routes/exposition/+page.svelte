@@ -1,9 +1,20 @@
-<script>
+<script lang="ts">
+	import { intersect } from '@svelte-put/intersect';
 	import Mecanographie from './Mecanographie.svelte';
+	import OrdinateursPersonnels from './OrdinateursPersonnels.svelte';
+	import { changePeriod } from '$lib/intersection-helpers';
 </script>
 
 <article>
-	<header>
+	<header
+		id="hero"
+		use:intersect={{
+			root: null,
+			rootMargin: '0px',
+			threshold: 1
+		}}
+		on:intersect={(e) => changePeriod(e, undefined)}
+	>
 		<h1>
 			De la<br /><span class="old-school">mécanique</span> au<br />
 			<span class="retro">numérique</span>
@@ -20,6 +31,7 @@
 	</header>
 
 	<Mecanographie />
+	<OrdinateursPersonnels />
 </article>
 
 <style lang="scss">
