@@ -7,7 +7,12 @@
 </script>
 
 <button class="image-with-modal" on:click={() => dialog.showModal()}>
-	<img src={image.src} alt={image.alt} />
+	<figure>
+		<img src={image.src} alt={image.alt} />
+		<figcaption>
+			{image.title}
+		</figcaption>
+	</figure>
 </button>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -41,6 +46,25 @@
 						</li>
 					{/each}
 				</ul>
+
+				{#if image.attribution}
+					<div class="image-attribution">
+						Attribution:
+						{#if image.attribution.url}
+							<a
+								class="link"
+								href={image.attribution.url}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								{image.attribution.author}
+							</a>
+						{:else}
+							{image.attribution.author}
+						{/if}
+						(License {image.attribution.license})
+					</div>
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -48,9 +72,13 @@
 
 <style lang="scss">
 	.image-with-modal {
-		cursor: pointer;
+		cursor: zoom-in;
 		border: 0;
 		padding: 0;
+
+		figure {
+			margin: 1rem;
+		}
 	}
 
 	.image-modal {
@@ -60,17 +88,29 @@
 		font: initial;
 		font-family: var(--font-modern);
 		box-shadow: 0px 10px 5px -5px rgba(0, 0, 0, 0.3);
-		cursor: pointer;
+		cursor: zoom-out;
 
 		.image-modal-contents {
 			max-width: 1000px;
 			display: flex;
 			cursor: initial;
+
+			@media (max-width: 900px) {
+				flex-direction: column;
+			}
 		}
 
 		img {
 			max-width: 50%;
 			object-fit: cover;
+
+			@media (max-width: 900px) {
+				max-width: 100%;
+				position: sticky;
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
 		}
 
 		&::backdrop {
@@ -93,6 +133,7 @@
 
 			.image-description {
 				line-height: 1.5;
+				text-align: justify;
 			}
 
 			.image-info-sources {
@@ -119,9 +160,17 @@
 							font-size: 0.75rem;
 							margin-top: 0.315rem;
 							color: var(--color-space-gray);
+							max-width: 45ch;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							white-space: nowrap;
 						}
 					}
 				}
+			}
+
+			.image-attribution {
+				margin-top: 1rem;
 			}
 		}
 	}

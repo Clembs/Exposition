@@ -6,7 +6,7 @@ export type Image = {
 	description: string;
 	attribution?: {
 		author: string;
-		url: string;
+		url?: string;
 		license: string;
 	};
 	sources: {
