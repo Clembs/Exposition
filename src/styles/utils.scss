@@ -42,6 +42,14 @@
 	}
 }
 
+.link {
+	color: var(--color-skype-blue);
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
 .retro {
 	font-family: var(--font-retro);
 }
@@ -52,4 +60,8 @@
 
 .modern {
 	font-family: var(--font-modern);
+}
+
+abbr {
+	cursor: help;
 }

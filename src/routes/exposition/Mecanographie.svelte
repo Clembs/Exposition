@@ -2,9 +2,19 @@
 	import ImageGallery from '$lib/components/ImageGallery.svelte';
 	import cartePerforee from '$lib/images/mecanographie/carte-perforee';
 	import tabulatrice from '$lib/images/mecanographie/tabulatrice';
+	import { changePeriod, changeYear } from '$lib/intersection-helpers';
+	import { intersect } from '@svelte-put/intersect';
 </script>
 
-<section id="mécanographie">
+<section
+	id="mécanographie"
+	use:intersect={{
+		root: null,
+		rootMargin: '0px',
+		threshold: 0.25
+	}}
+	on:intersect={(e) => changePeriod(e, 0, 1920)}
+>
 	<div class="contents">
 		<h2>Partie 1 : la mécanographie</h2>
 		<p>
@@ -17,7 +27,14 @@
 
 		<ImageGallery images={[tabulatrice, cartePerforee]} />
 
-		<p>
+		<p
+			use:intersect={{
+				root: null,
+				rootMargin: '0px',
+				threshold: 0.1
+			}}
+			on:intersect={(e) => changeYear(e, { year: 1940, previousYear: 1920 })}
+		>
 			À l'approche de la Seconde Guerre mondiale, les installations connaissaient une forte
 			croissance, de l'ordre de 30 à 50 % annuels. Pendant la guerre, l'utilisation de circuits
 			imprimés et de diodes au germanium a été introduite. L'après-guerre marque le début du succès
