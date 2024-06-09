@@ -17,7 +17,7 @@ La lecture des cartes dans la tabulatrice était effectuée ligne par ligne. Les
 	sources: [
 		{
 			url: 'https://fr.wikipedia.org/wiki/Tabulatrice',
-			title: 'Tabulatrice — Wikipédia',
+			title: 'Wikipédia',
 			iconUrl: 'https://fr.wikipedia.org/static/favicon/wikipedia.ico'
 		}
 	]

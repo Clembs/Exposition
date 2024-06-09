@@ -15,7 +15,7 @@ export default {
 		{
 			iconUrl:
 				'https://www.cigref.fr/wp/wp-content/uploads/2017/12/logo_Cigref_rond_bleu_300px-150x150.png',
-			title: "A l'origine de l'informatique, une carte perforée - CIGREF",
+			title: 'CIGREF',
 			url: 'https://www.cigref.fr/archives/histoire-cigref/blog/a-lorigine-de-linformatique-une-carte-perforee/'
 		}
 	]
