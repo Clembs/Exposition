@@ -1,5 +1,6 @@
 <script lang="ts">
-	import ImageModal from '$lib/components/ImageModal.svelte';
+	import ImageGallery from '$lib/components/ImageGallery.svelte';
+	import cartePerforee from '$lib/images/mecanographie/carte-perforee';
 	import tabulatrice from '$lib/images/mecanographie/tabulatrice';
 </script>
 
@@ -10,11 +11,20 @@
 			Après la Première Guerre mondiale, l'importation de machines statistiques américaines en
 			Europe marque le début de la mécanographie, principalement utilisée dans les domaines de
 			l'assurance, des statistiques et de l'actuariat. La société qui produisait les machines
-			HOLLERITH, devenue IBM aux États-Unis, était représentée par la Compagnie Electro-Comptable,
+			HOLLERITH, devenue IBM aux États-Unis, était représentée par la Compagnie Electro-Mécanique,
 			qui est devenue IBM France en 1947.
 		</p>
 
-		<ImageModal image={tabulatrice} />
+		<ImageGallery images={[tabulatrice, cartePerforee]} />
+
+		<p>
+			À l'approche de la Seconde Guerre mondiale, les installations connaissaient une forte
+			croissance, de l'ordre de 30 à 50 % annuels. Pendant la guerre, l'utilisation de circuits
+			imprimés et de diodes au germanium a été introduite. L'après-guerre marque le début du succès
+			de la mécanographie avec de nouvelles inventions comme les calculatrices et les premières
+			mémoires de masse magnétiques, qui, en raison de leur capacité de programmation illimitée,
+			deviennent centrales dans les systèmes de traitement de l'information.
+		</p>
 	</div>
 </section>
 
