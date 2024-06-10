@@ -30,14 +30,9 @@
 			plus intuitifs, utiles et addictifs.
 			<br />
 			<br />
-			L'exposition <i>De la mécanique au numérique</i> retrace l'histoire de la technologie, de la
-			course aux ordinateurs les plus performants à celle des logiciels les plus sophistiqués, en
-			passant par la miniaturisation des composants électroniques ou encore la démocratisation des
-			gadgets connectés.
-			<br />
-			<br />
-			Ne manquez pas cette opportunité unique de découvrir l'évolution fascinante de l'informatique et
-			de célébrer l'ingéniosité humaine qui l'a rendu possible.
+			L'exposition <i>De la mécanique au numérique</i> retrace l'histoire de la technologie, de la course
+			aux ordinateurs les plus performants à celle des logiciels les plus sophistiqués, en passant par
+			la miniaturisation des composants électroniques ou encore la démocratisation des gadgets connectés.
 		</div>
 		<svg
 			width="459"
