@@ -12,7 +12,7 @@
 			De la
 			<span id="mecanique"> mécanique </span><br />
 			au
-			<span id="numerique"> numerique </span>
+			<span id="numerique"> numérique </span>
 		</h1>
 
 		<p>Présentée par des étudiant•es en BUT Informatique de l'IUT Paul Sabatier</p>
