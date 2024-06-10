@@ -52,6 +52,12 @@
 
 .retro {
 	font-family: var(--font-retro);
+	text-rendering: geometricPrecision;
+	font-weight: 400;
+
+	& * {
+		font-weight: 400;
+	}
 }
 
 .old-school {
