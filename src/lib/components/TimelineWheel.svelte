@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { currentSection } from '$lib/sections';
 	import { fade } from 'svelte/transition';
+	import SectionPicker from './SectionPicker.svelte';
 
 	let rotationDeg = 0;
 	let menuOpen = false;
@@ -10,7 +11,16 @@
 	}
 </script>
 
-<svelte:window on:scroll={onScroll} />
+{#if menuOpen}
+	<SectionPicker on:close={() => (menuOpen = false)} />
+{/if}
+
+<svelte:window
+	on:scroll={onScroll}
+	on:keydown={(e) => {
+		if (e.key === 'Escape') menuOpen = false;
+	}}
+/>
 
 <button
 	on:click={() => (menuOpen = true)}
