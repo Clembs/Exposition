@@ -148,6 +148,7 @@
 			padding: clamp(1.5rem, 5vw, 3rem);
 			max-width: 75ch;
 			line-height: 1.5;
+			width: 75%;
 		}
 
 		&::after {
@@ -159,7 +160,7 @@
 			background-size: cover;
 			width: 50%;
 			aspect-ratio: 2.11;
-			min-width: 400px;
+			min-width: 500px;
 			max-width: 700px;
 
 			@media (max-width: 800px) {
@@ -173,9 +174,10 @@
 		gap: 1rem;
 		align-items: center;
 		transform: perspective(800px) rotateX(6deg) rotateY(-20deg) rotateZ(5deg);
+		translate: 0 5%;
 		transform-style: preserve-3d;
 		overflow: hidden;
-		margin-top: -5rem;
+		margin-top: -10rem;
 		z-index: -1;
 
 		.column {
@@ -205,8 +207,14 @@
 			}
 		}
 
-		@media (max-width: 800px) {
-			display: none;
+		@media (max-width: 1200px) {
+			translate: 15% 5%;
+		}
+		@media (max-width: 1000px) {
+			translate: 30% 5%;
+		}
+		@media (max-width: 900px) {
+			translate: 30% 10%;
 		}
 	}
 </style>
