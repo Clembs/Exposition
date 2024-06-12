@@ -31,7 +31,7 @@
 		<div class="image-info">
 			<div class="image-info-text">
 				<div class="image-title">{image.title}</div>
-				<p class="image-description">{image.description}</p>
+				<p class="image-description">{@html image.description}</p>
 			</div>
 
 			<div class="image-info-sources">
@@ -108,7 +108,7 @@
 		cursor: zoom-out;
 
 		.image-modal-contents {
-			max-width: 1000px;
+			// max-width: 1000px;
 			display: flex;
 			cursor: initial;
 
@@ -174,6 +174,7 @@
 						border-radius: 0.75rem;
 
 						img {
+							image-rendering: pixelated;
 							border-radius: 0.25rem;
 						}
 
