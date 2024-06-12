@@ -23,7 +23,7 @@
 	on:intersect={(e) => currentSection.set('Internet')}
 >
 	<div class="contents">
-		<h2>Partie 3 :<br /> La bascule du phénomène Internet</h2>
+		<h2>Partie 3 :<br /> Le phénomène Internet</h2>
 		<p>
 			Le développement d'Internet commence avec la création de la <abbr
 				title="Defense Advanced Research Projects Agency"
