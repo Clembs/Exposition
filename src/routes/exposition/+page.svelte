@@ -3,6 +3,7 @@
 	import Mecanographie from './Mecanographie.svelte';
 	import OrdinateursPersonnels from './OrdinateursPersonnels.svelte';
 	import { changePeriod } from '$lib/intersection-helpers';
+	import Internet from './Internet.svelte';
 
 	const featuredImages = [
 		// Idk what this is
@@ -100,6 +101,7 @@
 
 	<Mecanographie />
 	<OrdinateursPersonnels />
+	<Internet />
 </article>
 
 <style lang="scss">
