@@ -11,6 +11,7 @@
 
 <section
 	id="ordinateurs-personnels"
+	class="retro"
 	use:intersect={{
 		root: null,
 		rootMargin: '0px 0px 0px 0px',
@@ -46,7 +47,6 @@
 		padding: 5rem 1.5rem;
 
 		color: var(--color-mica-dark);
-		font-family: var(--font-retro);
 		font-size: 1.25rem;
 		background-color: var(--color-rock-gray);
 
