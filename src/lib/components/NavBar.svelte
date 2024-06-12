@@ -16,10 +16,7 @@
 			<a href="/#galerie">Galerie</a>
 		</li>
 		<li>
-			<a href="/#contact">Contact</a>
-		</li>
-		<li>
-			<a href="/#billeterie" id="billets">Exposition</a>
+			<a href="/exposition" id="billets">Exposition</a>
 		</li>
 	</ul>
 </nav>
