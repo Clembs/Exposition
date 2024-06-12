@@ -108,7 +108,7 @@
 		cursor: zoom-out;
 
 		.image-modal-contents {
-			// max-width: 1000px;
+			max-width: 1300px;
 			display: flex;
 			cursor: initial;
 
