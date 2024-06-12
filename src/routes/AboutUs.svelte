@@ -8,10 +8,16 @@
 
 		<p>Réalisé dans le cadre de première année de BUT Informatique.</p>
 
+		<p>
+			Les images, icônes et autres éléments graphiques sont la propriété de leurs auteurs
+			respectifs.
+		</p>
+
 		<h3>Équipe</h3>
 		<ul>
 			<li>Chef de projet : Clément VOISIN</li>
 			<li>Réalisation du site web : Clément VOISIN, Gérald LEBAN, Kylian PAWILOWSKI</li>
+			<li>Éléments graphiques : Clément VOISIN</li>
 			<li>Écriture : Ellisa EE, Clément VOISIN, Gérald LEBAN, Kylian PAWILOWSKI</li>
 			<li>Recherche : Clément VOISIN, Ellisa EE</li>
 		</ul>
