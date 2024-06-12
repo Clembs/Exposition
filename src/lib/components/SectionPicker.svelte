@@ -22,7 +22,10 @@
 							src="https://em-content.zobj.net/source/sharp/397/floppy-disk_1f4be.png"
 						/>
 					</div>
-					Les machines électromécaniques, avant l'informatique
+					<div class="section-text">
+						<div class="title">Les machines électromécaniques, avant l'informatique</div>
+						<div class="period">1920-1970</div>
+					</div>
 				</a>
 			</li>
 			<li in:fly={{ x: -25, duration: 300, delay: 400 }}>
@@ -36,8 +39,11 @@
 							src="https://em-content.zobj.net/source/serenityos/392/computer-mouse_1f5b1-fe0f.png"
 						/>
 					</div>
-					L'ordinateur devient grand public</a
-				>
+					<div class="section-text">
+						<div class="title">L'ordinateur devient grand public</div>
+						<div class="period">1970-1990</div>
+					</div>
+				</a>
 			</li>
 			<li in:fly={{ x: -25, duration: 300, delay: 500 }}>
 				<a href="#internet" on:click={() => dispatch('close')}>
@@ -50,7 +56,10 @@
 							src="https://jvflux.fr/images/0/0e/18.gif"
 						/>
 					</div>
-					La bascule du phénomène Internet</a
+					<div class="section-text">
+						<div class="title">Le phénomène Internet</div>
+						<div class="period">1990-2010</div>
+					</div></a
 				>
 			</li>
 		</ul>
@@ -124,6 +133,11 @@
 								height: 32px;
 							}
 						}
+					}
+
+					.period {
+						font-size: 0.75em;
+						opacity: 0.75;
 					}
 				}
 			}
