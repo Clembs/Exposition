@@ -57,7 +57,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background-image: url('./clock.svg');
+			background-image: url('/clock.svg');
 			background-size: cover;
 			rotate: var(--rotation);
 			border-radius: 50%;
