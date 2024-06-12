@@ -5,7 +5,7 @@ export default {
 	src: 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Apple_II_at_Mus%C3%A9e_Bolo.jpg',
 	alt: "L'Apple II, un des premiers ordinateurs personnels commercialisés par Apple",
 	title: 'Apple II',
-	description: `L'Apple II est un des premiers ordinateurs personnels à avoir rencontré un succès commercial, lancé par Apple en 1977. Il est apprécié pour sa convivialité et ses capacités graphiques, ouvrant la voie à l'informatique grand public.`,
+	description: `Stephen Wozniak développe l'Apple II en s'inspirant de son travail sur le jeu Breakout d'Atari, en y ajoutant des fonctionnalités comme la couleur, le son et les manettes. L'Apple II, lancé en 1977, est équipé de 4 Ko de RAM extensible à 48 Ko, et il devient un succès grâce à son design abordable et ses performances. Apple diversifie ensuite ses produits avec l'Apple III pour les professionnels et plusieurs versions de l'Apple II pour les particuliers, qui connaît une grande popularité jusqu'à l'arrêt de sa production en 1993.`,
 	attribution: {
 		author: 'Rama',
 		license: 'CC BY-SA 2.0 France'
