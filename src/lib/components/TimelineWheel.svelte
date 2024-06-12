@@ -1,56 +1,34 @@
 <script lang="ts">
-	import { currentSection, currentYear } from '$lib/sections';
-	import { tweened } from 'svelte/motion';
+	import { currentSection } from '$lib/sections';
+	import { fade } from 'svelte/transition';
 
-	const tweenedYear = tweened($currentYear, {
-		interpolate(a, b) {
-			// only interpolate integers
-			return (t) => Math.round(a + (b - a) * t);
-		},
-		duration: 250
-	});
+	let rotationDeg = 0;
+	let menuOpen = false;
 
-	let wheel: HTMLElement;
-	let section = $currentSection;
-
-	$: {
-		console.log($currentYear);
-		tweenedYear.set($currentYear);
-	}
-	$: {
-		$currentSection;
-
-		if (wheel && section !== $currentSection) {
-			// animate rotation and change section mid-animation
-			wheel.animate([{ rotate: '0deg' }, { rotate: '180deg' }], {
-				duration: 500,
-				easing: 'ease-in'
-			}).onfinish = () => {
-				section = $currentSection;
-			};
-
-			wheel.animate([{ rotate: '180deg' }, { rotate: '360deg' }], {
-				duration: 500,
-				easing: 'ease-out',
-				delay: 500
-			});
-			// .onfinish = () => {
-			// 	wheel.style.rotate = '0deg';
-			// };
-		}
+	function onScroll() {
+		rotationDeg = window.scrollY % 360;
 	}
 </script>
 
-<div id="timeline-wheel" class:visible={$currentSection} bind:this={wheel}>
+<svelte:window on:scroll={onScroll} />
+
+<button
+	on:click={() => (menuOpen = true)}
+	id="timeline-wheel"
+	class:visible={$currentSection}
+	style="--rotation: {rotationDeg}deg;"
+>
 	<div id="timeline-elements">
-		<div id="timeline-year">{$tweenedYear}</div>
+		<!-- <div id="timeline-year">{$tweenedYear}</div> -->
 		<div id="timeline-period">
-			<div class="period-title">
-				{section?.title}
-			</div>
+			{#key $currentSection}
+				<div out:fade={{ duration: 250 }} in:fade={{ delay: 260 }} class="period-title">
+					{$currentSection}
+				</div>
+			{/key}
 		</div>
 	</div>
-</div>
+</button>
 
 <style lang="scss">
 	#timeline-wheel {
@@ -58,13 +36,22 @@
 
 		position: fixed;
 		bottom: calc(0px - var(--wheel-size));
-		// rotate: 180deg;
 		left: 50%;
 		transform: translateX(-50%) translateY(50%);
 		font-family: var(--font-modern);
-		background-color: white;
-		background-image: url('./clock.svg');
-		background-size: cover;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url('./clock.svg');
+			background-size: cover;
+			rotate: var(--rotation);
+			border-radius: 50%;
+		}
 
 		color: var(--color-shell-black);
 		transition: bottom 1000ms ease;
@@ -96,22 +83,19 @@
 			height: 50%;
 			width: 100%;
 
-			#timeline-year {
-				font-size: 2rem;
-				font-weight: bold;
-			}
-
 			#timeline-period {
 				position: relative;
-				width: 100%;
+				width: 90%;
+				top: 0.75rem;
 
 				.period-title {
 					width: 100%;
 					text-align: center;
 					position: absolute;
+					font-size: 1.25rem;
+					font-weight: bold;
 					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
+					transform: translateY(-50%);
 				}
 			}
 		}

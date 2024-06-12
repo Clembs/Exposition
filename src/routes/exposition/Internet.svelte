@@ -9,18 +9,18 @@
 	import skyblog from '$lib/images/internet/skyblog';
 	import timBernersLee from '$lib/images/internet/tim-berners-lee';
 	import webpage from '$lib/images/internet/webpage';
-	import { changePeriod } from '$lib/intersection-helpers';
+	import { currentSection } from '$lib/sections';
 	import { intersect } from '@svelte-put/intersect';
 </script>
 
 <section
-	id="ordinateurs-personnels"
+	id="internet"
 	use:intersect={{
 		root: null,
 		rootMargin: '0px 0px 0px 0px',
 		threshold: 0.25
 	}}
-	on:intersect={(e) => changePeriod(e, 1, 1970)}
+	on:intersect={(e) => currentSection.set('Internet')}
 >
 	<div class="contents">
 		<h2>Partie 3 : La bascule vers le phénomène Internet</h2>
@@ -77,13 +77,18 @@
 </section>
 
 <style lang="scss">
-	#ordinateurs-personnels {
+	#internet {
 		padding: 5rem 1.5rem;
 
 		color: var(--color-mica-dark);
 		font-family: var(--font-modern);
 		font-size: 1.25rem;
 		background-color: var(--color-skype-blue);
+		background-image: url('https://upload.wikimedia.org/wikipedia/en/2/27/Bliss_%28Windows_XP%29.png');
+		background-size: cover;
+		background-position: center;
+		-webkit-backdrop-filter: blur(10px) brightness(0.8);
+		backdrop-filter: blur(10px) brightness(0.8);
 
 		h2 {
 			font-size: 2.5rem;

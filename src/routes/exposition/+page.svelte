@@ -2,8 +2,9 @@
 	import { intersect } from '@svelte-put/intersect';
 	import Mecanographie from './Mecanographie.svelte';
 	import OrdinateursPersonnels from './OrdinateursPersonnels.svelte';
-	import { changePeriod } from '$lib/intersection-helpers';
 	import Internet from './Internet.svelte';
+	import TimelineWheel from '$lib/components/TimelineWheel.svelte';
+	import { currentSection } from '$lib/sections';
 
 	const featuredImages = [
 		// Idk what this is
@@ -53,7 +54,7 @@
 			rootMargin: '0px',
 			threshold: 1
 		}}
-		on:intersect={(e) => changePeriod(e, undefined)}
+		on:intersect={(e) => currentSection.set('')}
 	>
 		<div class="text">
 			<h1>
@@ -102,6 +103,8 @@
 	<Mecanographie />
 	<OrdinateursPersonnels />
 	<Internet />
+
+	<TimelineWheel />
 </article>
 
 <style lang="scss">

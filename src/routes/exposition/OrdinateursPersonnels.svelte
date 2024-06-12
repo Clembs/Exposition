@@ -5,7 +5,7 @@
 	import commodore64 from '$lib/images/pc/commodore-64';
 	import ibmPc from '$lib/images/pc/ibm-pc';
 	import trs80 from '$lib/images/pc/trs-80';
-	import { changePeriod } from '$lib/intersection-helpers';
+	import { currentSection } from '$lib/sections';
 	import { intersect } from '@svelte-put/intersect';
 </script>
 
@@ -17,7 +17,7 @@
 		rootMargin: '0px 0px 0px 0px',
 		threshold: 0.25
 	}}
-	on:intersect={(e) => changePeriod(e, 1, 1970)}
+	on:intersect={(e) => currentSection.set('Ordinateurs personnels')}
 >
 	<div class="contents">
 		<h2>Partie 2 : L'ordinateur devient grand public</h2>

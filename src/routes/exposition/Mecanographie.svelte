@@ -2,7 +2,7 @@
 	import ImageGallery from '$lib/components/ImageGallery.svelte';
 	import cartePerforee from '$lib/images/mecanographie/carte-perforee';
 	import tabulatrice from '$lib/images/mecanographie/tabulatrice';
-	import { changePeriod, changeYear } from '$lib/intersection-helpers';
+	import { currentSection } from '$lib/sections';
 	import { intersect } from '@svelte-put/intersect';
 </script>
 
@@ -13,10 +13,10 @@
 		rootMargin: '0px',
 		threshold: 0.25
 	}}
-	on:intersect={(e) => changePeriod(e, 0, 1920)}
+	on:intersect={(e) => currentSection.set('Machines électromécaniques')}
 >
 	<div class="contents">
-		<h2>Partie 1 : la mécanographie</h2>
+		<h2>Partie 1 : Les machines électromécaniques, avant l'informatique</h2>
 		<p>
 			Après la Première Guerre mondiale, l'importation de machines statistiques américaines en
 			Europe marque le début de la mécanographie, principalement utilisée dans les domaines de
@@ -27,14 +27,7 @@
 
 		<ImageGallery images={[tabulatrice, cartePerforee]} />
 
-		<p
-			use:intersect={{
-				root: null,
-				rootMargin: '0px',
-				threshold: 0.1
-			}}
-			on:intersect={(e) => changeYear(e, { year: 1940, previousYear: 1920 })}
-		>
+		<p>
 			À l'approche de la Seconde Guerre mondiale, les installations connaissaient une forte
 			croissance, de l'ordre de 30 à 50 % annuels. Pendant la guerre, l'utilisation de circuits
 			imprimés et de diodes au germanium a été introduite. L'après-guerre marque le début du succès
