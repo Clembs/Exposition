@@ -1,5 +1,13 @@
 <nav>
-	<a href="/">De la mécanique au numérique</a>
+	<a href="/">
+		<img
+			loading="eager"
+			height="32"
+			width="32"
+			src="/windows-95-icons/globe.png"
+			alt="Logo de l'exposition : De la mécanique au numérique"
+		/></a
+	>
 	<ul>
 		<li>
 			<a href="/#à-propos">À propos</a>
@@ -29,6 +37,10 @@
 		z-index: 99;
 		background-color: white;
 		width: 100%;
+
+		img {
+			image-rendering: pixelated;
+		}
 
 		ul {
 			display: flex;
