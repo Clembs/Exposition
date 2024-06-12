@@ -1,7 +1,10 @@
 <script lang="ts">
 	import ImageGallery from '$lib/components/ImageGallery.svelte';
 	import cartePerforee from '$lib/images/mecanographie/carte-perforee';
+	import ibm1401 from '$lib/images/mecanographie/ibm-1401';
+	import pascaline from '$lib/images/mecanographie/pascaline';
 	import tabulatrice from '$lib/images/mecanographie/tabulatrice';
+	import triumphatorCrn1 from '$lib/images/mecanographie/triumphator-crn1';
 	import { currentSection } from '$lib/sections';
 	import { intersect } from '@svelte-put/intersect';
 </script>
@@ -36,12 +39,16 @@
 			deviennent centrales dans les systèmes de traitement de l'information.
 		</p>
 
+		<ImageGallery images={[pascaline, triumphatorCrn1]} />
+
 		<p>
 			En 1959, IBM présente une nouvelle génération d'ordinateurs, l'IBM 1401, qui intègre diverses
 			fonctionnalités de différentes machines électromécaniques, telles que les tabulatrices,
 			trieuses et interclasseuses. Le terme informatique est proposé en France en 1962, remplaçant
 			progressivement la mécanographie dans les années 1960.
 		</p>
+
+		<ImageGallery images={[ibm1401]} />
 	</div>
 </section>
 
