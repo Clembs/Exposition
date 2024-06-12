@@ -10,7 +10,7 @@
 	>
 	<ul>
 		<li>
-			<a href="/#à-propos">À propos</a>
+			<a href="/#à-propos">Présentation</a>
 		</li>
 		<li>
 			<a href="/#galerie">Galerie</a>
