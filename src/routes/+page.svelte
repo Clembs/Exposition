@@ -14,6 +14,6 @@
 	<Presentation />
 	<InfosPratiques />
 	<Gallery {name} />
-	<FindUs />
-	<Billetterie bind:name />
+	<!-- <FindUs /> -->
+	<!-- <Billetterie bind:name /> -->
 </main>
