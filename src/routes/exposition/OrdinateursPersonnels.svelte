@@ -20,7 +20,7 @@
 	on:intersect={(e) => currentSection.set('Ordinateurs personnels')}
 >
 	<div class="contents">
-		<h2>Partie 2 : L'ordinateur devient grand public</h2>
+		<h2>Partie 2 :<br />L'ordinateur devient grand public</h2>
 		<p>
 			Les ordinateurs personnels grand public sont apparus à la fin des années 1970 lorsque le coût
 			et les dimensions des ordinateurs ont suffisamment diminué pour les rendre abordables. Voici
@@ -52,6 +52,7 @@
 
 		h2 {
 			font-size: 2.5rem;
+			text-wrap: balance;
 		}
 
 		.contents {

@@ -16,7 +16,7 @@
 	on:intersect={(e) => currentSection.set('Machines électromécaniques')}
 >
 	<div class="contents">
-		<h2>Partie 1 : Les machines électromécaniques, avant l'informatique</h2>
+		<h2>Partie 1 :<br />Les machines électromécaniques, avant l'informatique</h2>
 		<p>
 			Après la Première Guerre mondiale, l'importation de machines statistiques américaines en
 			Europe marque le début de la mécanographie, principalement utilisée dans les domaines de
@@ -35,6 +35,13 @@
 			mémoires de masse magnétiques, qui, en raison de leur capacité de programmation illimitée,
 			deviennent centrales dans les systèmes de traitement de l'information.
 		</p>
+
+		<p>
+			En 1959, IBM présente une nouvelle génération d'ordinateurs, l'IBM 1401, qui intègre diverses
+			fonctionnalités de différentes machines électromécaniques, telles que les tabulatrices,
+			trieuses et interclasseuses. Le terme informatique est proposé en France en 1962, remplaçant
+			progressivement la mécanographie dans les années 1960.
+		</p>
 	</div>
 </section>
 
@@ -49,6 +56,7 @@
 
 		h2 {
 			font-size: 2.5rem;
+			text-wrap: balance;
 		}
 
 		.contents {

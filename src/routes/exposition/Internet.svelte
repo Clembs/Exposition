@@ -23,7 +23,7 @@
 	on:intersect={(e) => currentSection.set('Internet')}
 >
 	<div class="contents">
-		<h2>Partie 3 : La bascule vers le phénomène Internet</h2>
+		<h2>Partie 3 :<br /> La bascule du phénomène Internet</h2>
 		<p>
 			Le développement d'Internet commence avec la création de la <abbr
 				title="Defense Advanced Research Projects Agency"
@@ -83,8 +83,7 @@
 		color: var(--color-mica-dark);
 		font-family: var(--font-modern);
 		font-size: 1.25rem;
-		background-color: var(--color-skype-blue);
-		background-image: url('https://upload.wikimedia.org/wikipedia/en/2/27/Bliss_%28Windows_XP%29.png');
+		background-color: #89b8e2;
 		background-size: cover;
 		background-position: center;
 		-webkit-backdrop-filter: blur(10px) brightness(0.8);
@@ -92,6 +91,7 @@
 
 		h2 {
 			font-size: 2.5rem;
+			text-wrap: balance;
 		}
 
 		.contents {
