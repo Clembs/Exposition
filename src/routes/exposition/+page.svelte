@@ -40,6 +40,10 @@
 	];
 </script>
 
+<svelte:head>
+	<title>De la mécanique au numérique - Exposition virtuelle</title>
+</svelte:head>
+
 <article>
 	<header
 		id="hero"

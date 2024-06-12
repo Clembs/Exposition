@@ -1,13 +1,15 @@
 <script lang="ts">
-	import Billetterie from './Billetterie/Billetterie.svelte';
 	import Hero from './Hero.svelte';
 	import Presentation from './Presentation.svelte';
 	import InfosPratiques from './InfosPratiques.svelte';
-	import FindUs from './FindUs.svelte';
 	import Gallery from './Gallery.svelte';
 
 	export let name: string;
 </script>
+
+<svelte:head>
+	<title>De la mécanique au numérique - Accueil</title>
+</svelte:head>
 
 <main>
 	<Hero />
