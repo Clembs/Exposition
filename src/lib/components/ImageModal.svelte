@@ -8,7 +8,7 @@
 
 <button class="image-with-modal" on:click={() => dialog.showModal()}>
 	<figure>
-		<img loading="lazy" src={image.src} alt={image.alt} />
+		<img src={image.src} alt={image.alt} />
 		<figcaption>
 			{image.title}
 		</figcaption>
@@ -19,7 +19,15 @@
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <dialog bind:this={dialog} class="image-modal" on:click|self={() => dialog.close()}>
 	<div class="image-modal-contents">
-		<img loading="lazy" src={image.src} alt={image.alt} />
+		<a
+			href={image.src}
+			aria-label="Ouvrir l'image en grand"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="open-image"
+		>
+			<img loading="lazy" src={image.src} alt={image.alt} />
+		</a>
 		<div class="image-info">
 			<div class="image-info-text">
 				<div class="image-title">{image.title}</div>
@@ -109,6 +117,10 @@
 			}
 		}
 
+		a.open-image {
+			cursor: zoom-in;
+			display: contents;
+		}
 		img {
 			max-width: 50%;
 			object-fit: cover;
