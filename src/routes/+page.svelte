@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Hero from './Hero.svelte';
 	import Presentation from './Presentation.svelte';
+	import Contact from './Contact.svelte';
 	import InfosPratiques from './InfosPratiques.svelte';
 	import Gallery from './Gallery.svelte';
 
@@ -18,4 +19,5 @@
 	<Gallery {name} />
 	<!-- <FindUs /> -->
 	<!-- <Billetterie bind:name /> -->
+	<Contact />
 </main>

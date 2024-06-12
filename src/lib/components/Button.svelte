@@ -9,6 +9,7 @@
 	export let active: undefined | boolean = undefined;
 	export let inline = true;
 	export let style: Styles = 'default';
+	export let disabled = false;
 </script>
 
 {#if href}
@@ -18,11 +19,12 @@
 		class="button {variant} {style}"
 		class:active
 		class:inline
+		aria-disabled={disabled}
 	>
 		<slot />
 	</a>
 {:else}
-	<button class="button {variant} {style}" class:active class:inline>
+	<button on:click {disabled} class="button {variant} {style}" class:active class:inline>
 		<slot />
 	</button>
 {/if}
@@ -150,12 +152,19 @@
 				box-shadow 300ms,
 				background-color 300ms;
 
-			&:hover {
+			&:hover:not(:disabled, [aria-disabled='true']) {
 				box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 			}
 
 			&:active {
 				background-color: hsl(207, 90%, 64%);
+			}
+
+			&:disabled,
+			&[aria-disabled='true'] {
+				background-color: hsl(0, 0%, 87%);
+				color: hsl(0, 0%, 67%);
+				cursor: not-allowed;
 			}
 		}
 
