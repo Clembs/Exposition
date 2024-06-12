@@ -4,6 +4,8 @@
 	import Contact from './Contact.svelte';
 	import InfosPratiques from './InfosPratiques.svelte';
 	import Gallery from './Gallery.svelte';
+	import Cta from './Cta.svelte';
+	import AboutUs from './AboutUs.svelte';
 
 	export let name: string;
 </script>
@@ -19,5 +21,7 @@
 	<Gallery {name} />
 	<!-- <FindUs /> -->
 	<!-- <Billetterie bind:name /> -->
+	<AboutUs />
 	<Contact />
+	<Cta />
 </main>
