@@ -6,6 +6,8 @@
 	import TimelineWheel from '$lib/components/TimelineWheel.svelte';
 	import { currentSection } from '$lib/sections';
 	import NouvellesTechnologies from './NouvellesTechnologies.svelte';
+	import Credits from './Credits.svelte';
+	import Fin from './Fin.svelte';
 
 	const featuredImages = [
 		// Idk what this is
@@ -105,6 +107,8 @@
 	<OrdinateursPersonnels />
 	<Internet />
 	<NouvellesTechnologies />
+	<Fin />
+	<Credits />
 
 	<TimelineWheel />
 </article>
