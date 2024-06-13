@@ -2,7 +2,7 @@ import type { Image } from '..';
 
 export default {
 	id: 'triumphator-crn1',
-	src: 'https://upload.wikimedia.org/wikipedia/commons/8/80/Arts_et_Metiers_Pascaline_dsc03869.jpg',
+	src: 'https://ancmeca.org/wp-content/uploads/2015/01/Triumphator-CRN1-1958.jpg',
 	alt: 'Le Triumphator CRN1, une machine à calculer mécanique inventée par Triumphator Werke Nürnberg en 1922',
 	title: 'Triumphator CRN1',
 	description: `La Triumphator CRN1, introduite au début du XXe siècle dans le contexte de la révolution industrielle et des avancées technologiques rapides, est une calculatrice mécanique allemande renommée pour sa précision et sa fiabilité. Utilisée pour divers calculs commerciaux et scientifiques, elle représente une étape importante dans l'évolution des dispositifs de calcul avant l'ère numérique.`,
