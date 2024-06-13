@@ -1,7 +1,5 @@
 <script lang="ts">
 	import ImageGallery from '$lib/components/ImageGallery.svelte';
-	import ibm1401 from '$lib/images/mecanographie/ibm-1401';
-	import pascaline from '$lib/images/mecanographie/pascaline';
 	import appleIi from '$lib/images/pc/apple-ii';
 	import cga from '$lib/images/pc/cga';
 	import commodore64 from '$lib/images/pc/commodore-64';
