@@ -62,6 +62,22 @@
 					</div></a
 				>
 			</li>
+			<li in:fly={{ x: -25, duration: 300, delay: 500 }}>
+				<a href="#nouvelles-technologies" on:click={() => dispatch('close')}>
+					<div class="icon" style="--color: var(--gradient-vision-pro);">
+						<img
+							width="48"
+							height="48"
+							alt="📣"
+							src="https://em-content.zobj.net/source/google/387/megaphone_1f4e3.png"
+						/>
+					</div>
+					<div class="section-text">
+						<div class="title">Des nouvelles technologies au service de l'humanité ?</div>
+						<div class="period">2015-Présent</div>
+					</div></a
+				>
+			</li>
 		</ul>
 		<div in:fly={{ x: -25, duration: 300, delay: 600 }}>
 			<Button style="gnome3" on:click={() => dispatch('close')}>Fermer (Échap)</Button>
@@ -117,7 +133,7 @@
 					.icon {
 						padding: 1.5rem;
 						border-radius: 50%;
-						background-color: var(--color);
+						background: var(--color);
 						display: grid;
 						flex-shrink: 0;
 
