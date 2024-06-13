@@ -98,6 +98,7 @@
 				}
 
 				background-color: rgba(255, 255, 255, 0.75);
+				color: black;
 				cursor: pointer;
 				padding: 0.5rem;
 				border-radius: 99rem;
