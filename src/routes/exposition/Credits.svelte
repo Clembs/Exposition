@@ -36,7 +36,7 @@
 
 			<div class="buttons">
 				<Button href="https://github.com/Clembs/Exposition" style="visionos">
-					Voir le code source du projet
+					Code source du projet
 				</Button>
 
 				<Button href="/" style="visionos">Retour à l'accueil</Button>
@@ -54,7 +54,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: 90vh;
+		min-height: 90vh;
 		background-image: url('/visionos-background.png');
 		background-size: cover;
 		background-position: center;
@@ -80,6 +80,7 @@
 			justify-content: flex-end;
 			margin-top: 2rem;
 			width: 100%;
+			flex-wrap: wrap;
 		}
 	}
 </style>
